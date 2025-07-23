@@ -1,117 +1,95 @@
-# Anewstip-Journalist-Scraper
-This project is a GUI-based web scraper for extracting journalist information from Anewstip based on a list of keywords. It uses Selenium, BeautifulSoup, and Tkinter to automate the browser, scrape profiles, and save data to an Excel file.  Features Keyword-based Search: Load keywords from a .txt file (one keyword per line). 
+# Anewstip Journalist Scraper
 
+This project is a **GUI-based web scraper** for extracting journalist information from [Anewstip](https://anewstip.com/) based on a list of keywords.  
+It uses **Selenium**, **BeautifulSoup**, and **Tkinter** to automate the browser, scrape profiles, and save data to an Excel file.
 
-This project is a GUI-based web scraper for extracting journalist information from Anewstip based on a list of keywords.
-It uses Selenium, BeautifulSoup, and Tkinter to automate the browser, scrape profiles, and save data to an Excel file.
+## Features
 
-Features
-Keyword-based Search: Load keywords from a .txt file (one keyword per line).
+- **Keyword-based Search:** Load keywords from a `.txt` file (one keyword per line).
+- **Automated Browser Launch:** Opens Chrome, where you manually log into Anewstip.
+- **Scraping Journalist Profiles:** Extracts:
+  - Journalist Name
+  - Title
+  - Outlet
+  - Email (if available)
+  - Topics
+- **Live Excel Updates:** Saves results to `.xlsx` while scraping.
+- **Multi-page Support:** Automatically navigates through multiple result pages for each keyword.
+- **GUI Interface:** No need for command-line usage, thanks to Tkinter.
 
-Automated Browser Launch: Opens Chrome, where you manually log into Anewstip.
+## Requirements
 
-Scraping Journalist Profiles: Extracts:
-
-Journalist Name
-
-Title
-
-Outlet
-
-Email (if available)
-
-Topics
-
-Live Excel Updates: Saves results to .xlsx while scraping.
-
-Multi-page Support: Automatically navigates through multiple result pages for each keyword.
-
-GUI Interface: No need for command-line usage, thanks to Tkinter.
-
-Requirements
 Install the dependencies using:
 
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
-requirements.txt
+```
 
-nginx
-Copy
-Edit
+**requirements.txt**
+
+```
 selenium
 beautifulsoup4
 pandas
 openpyxl
-Additional Requirements:
+```
 
-Google Chrome installed.
+**Additional Requirements:**
+- **Google Chrome** installed.
+- **ChromeDriver** (make sure `chromedriver` matches your Chrome version and is in your system PATH).
 
-ChromeDriver (make sure chromedriver matches your Chrome version and is in your system PATH).
+## How to Use
 
-How to Use
-Clone this repository:
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/yourusername/anewstip-scraper.git
+   cd anewstip-scraper
+   ```
 
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/anewstip-scraper.git
-cd anewstip-scraper
-Install dependencies:
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run the app:
+3. **Run the app:**
+   ```bash
+   python app.py
+   ```
 
-bash
-Copy
-Edit
-python app.py
-In the GUI:
+4. **In the GUI:**
+   - Click **“Load Keywords File”** and select a `.txt` file with your keywords.
+   - Click **“Choose Save Location”** to select where to save results (`.xlsx`).
+   - Click **“Launch Anewstip”**, then log in manually when Chrome opens.
+   - Click **“Start Extract”** to start scraping.
 
-Click “Load Keywords File” and select a .txt file with your keywords.
+## Example Keyword File
 
-Click “Choose Save Location” to select where to save results (.xlsx).
-
-Click “Launch Anewstip”, then log in manually when Chrome opens.
-
-Click “Start Extract” to start scraping.
-
-Example Keyword File
-nginx
-Copy
-Edit
+```
 sports
 politics
 technology
-Output Example
+```
+
+## Output Example
+
 The resulting Excel file will look like:
 
-Keyword	Name	Title	Outlet	Email	Topics
-sports	John Doe	Reporter	ESPN	john@espn.com	Football, Basketball
-politics	Jane Smith	Journalist	NY Times	jane@nytimes.com	Elections, Policies
+| Keyword    | Name          | Title        | Outlet     | Email               | Topics                |
+|------------|--------------|-------------|------------|---------------------|-----------------------|
+| sports     | John Doe     | Reporter    | ESPN       | john@espn.com       | Football, Basketball  |
+| politics   | Jane Smith   | Journalist  | NY Times   | jane@nytimes.com    | Elections, Policies   |
 
-Code Overview
-app.py
-Contains:
+## Code Overview
 
-GUI setup with Tkinter
+- **`app.py`**  
+  Contains:
+  - GUI setup with Tkinter
+  - Selenium logic for navigating Anewstip
+  - BeautifulSoup parsing of journalist data
+  - Live Excel file creation with `openpyxl`
 
-Selenium logic for navigating Anewstip
-
-BeautifulSoup parsing of journalist data
-
-Live Excel file creation with openpyxl
-
-Possible Improvements
-Headless browser support.
-
-Proxy & captcha handling.
-
-Export in multiple formats (CSV, JSON).
-
-Error logging.
-
+## Possible Improvements
+- Headless browser support.
+- Proxy & captcha handling.
+- Export in multiple formats (CSV, JSON).
+- Error logging.
